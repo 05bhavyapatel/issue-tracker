@@ -1,0 +1,205 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.admin-header {
+  background-color: #663BB7;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 2rem;
+  font-weight: 400;
+  font-size: 1.3rem;
+  height: 35px;
+}
+
+.admin-logo {
+  font-weight: 400;
+  font-size: 1.5rem;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+.header-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.home-button {
+  background-color: white;
+  color: #663BB7;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  border: 2px solid white;
+}
+
+.home-button:hover {
+  background-color: #663BB7;
+  color: white;
+  border: 2px solid #fff;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  overflow-y: auto;
+}
+
+.content-box {
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 1000px;
+}
+
+.content-box h3 {
+  font-size: 2rem;
+  color: #663BB7;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.project-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.project-table th, .project-table td {
+  border: 1px solid #ccc;
+  padding: 12px 15px;
+  text-align: center;
+}
+
+.project-table th {
+  background-color: #663BB7;
+  color: white;
+  font-weight: 500;
+}
+
+.project-table td {
+  font-size: 1rem;
+}
+
+.project-table td button {
+  margin: 0 5px;
+  min-width: 80px;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+}
+
+.loading p {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .admin-header {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+    padding: 10px 1rem;
+  }
+
+  .admin-logo {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+
+  .header-buttons {
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .home-button {
+    width: 100%;
+    padding: 12px;
+    text-align: center;
+  }
+
+  .content {
+    padding: 1rem;
+  }
+
+  .content-box {
+    padding: 20px;
+    width: 100%;
+  }
+
+  .content-box h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+
+  .loading p {
+    font-size: 1rem;
+  }
+
+  /* Mobile Card View for Projects */
+  .project-table {
+    display: none; /* Hide the table on mobile */
+  }
+
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+    width: 100%;
+  }
+
+  .project-card .project-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+  }
+
+  .project-card .project-info span {
+    font-weight: bold;
+  }
+
+  .project-card .actions {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .project-card .actions button {
+    width: 48%;
+  }
+}

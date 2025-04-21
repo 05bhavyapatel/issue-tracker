@@ -1,0 +1,74 @@
+<div class="admin-container">
+  <div class="admin-header">
+    <h2 class="admin-logo">Issue Tracker</h2>
+    <div class="header-buttons">
+      <button mat-raised-button class="home-button" routerLink="/admin-user"><mat-icon>person</mat-icon>
+        Manage Users</button>
+      <button mat-raised-button class="home-button" routerLink="/admin">
+        <mat-icon>keyboard_backspace</mat-icon>Go Back</button>
+      <button mat-raised-button class="home-button" routerLink="/home">
+        <mat-icon>logout</mat-icon> Log out
+      </button>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="content-box" *ngIf="!loading">
+      <h3>Manage Projects</h3>
+
+      <!-- Search by Project Name -->
+      <mat-form-field appearance="outline" class="search-bar">
+        <mat-label>Search Project Name</mat-label>
+        <input matInput type="text" [(ngModel)]="searchText" placeholder="Search by name">
+      </mat-form-field>
+
+      <table *ngIf="projects.length > 0" class="project-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Project Name</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let project of projects | projectFilter:searchText">
+            <td>{{ project.id }}</td>
+            <td>
+              <div *ngIf="editProjectId !== project.id">{{ project.name }}</div>
+              <div *ngIf="editProjectId === project.id">
+                <input [(ngModel)]="editedName" type="text">
+              </div>
+            </td>
+            
+            <td>{{ project.startDate | date }}</td>
+            <td>
+              <div *ngIf="editProjectId !== project.id">{{ project.endDate | date }}</div>
+              <div *ngIf="editProjectId === project.id">
+                <input [(ngModel)]="editedEndDate" type="date">
+              </div>
+            </td>
+            
+            <td>
+              <button mat-raised-button color="warn" (click)="deleteProject(project.id)">Delete</button>
+              <button *ngIf="editProjectId !== project.id" mat-raised-button color="primary" (click)="startEdit(project)">Edit</button>
+              <div *ngIf="editProjectId === project.id">
+                <button mat-button color="primary" (click)="saveEdit(project)">Save</button>
+                <button mat-button color="warn" (click)="cancelEdit()">Cancel</button>
+              </div>
+            </td>
+            
+          </tr>
+        </tbody>
+      </table>
+
+      <p *ngIf="projects.length === 0">No projects found.</p>
+    </div>
+
+    <div class="loading" *ngIf="loading">
+      <mat-spinner></mat-spinner>
+      <p>Loading projects...</p>
+    </div>
+  </div>
+</div>

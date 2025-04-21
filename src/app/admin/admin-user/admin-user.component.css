@@ -1,0 +1,238 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%; 
+}
+
+.admin-header {
+  background-color: #663BB7;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 2rem;
+  font-weight: 400;
+  font-size: 1.3rem;
+  height: 35px;
+}
+
+.admin-logo {
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.header-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.home-button {
+  background-color: white;
+  color: #663BB7;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  border: 2px solid #663BB7;
+}
+
+.home-button:hover {
+  background-color: #663BB7;
+  color: white;
+  border: 2px solid #fff;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  background-color: white;
+  overflow-y: auto;
+}
+
+.content-box {
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 1000px;
+}
+
+.content-box h3 {
+  font-size: 2rem;
+  color: #663BB7;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.manage_user {
+  text-align: center;
+  color: #663BB7;
+  margin-bottom: 20px;
+}
+
+button {
+  margin: 8px;
+  padding: 10px 16px;
+  background-color: #663BB7;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  background-color: #663BB7;
+}
+
+input, select {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin: 12px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+select {
+  appearance: none;
+}
+
+.user-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.user-list-item button {
+  background-color: #d32f2f;
+}
+
+.user-list-item button:hover {
+  background-color: #9a0007;
+}
+
+.create-user-form {
+  margin-top: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.form-group input,
+.form-group select {
+  height: 45px;
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .admin-header {
+    padding: 10px 1rem;
+    height: auto; /* Adjust the height to auto for small screens */
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .admin-logo {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .header-buttons {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.5rem;
+    margin-top: 10px;
+  }
+
+  .home-button {
+    width: 100%;
+    padding: 12px;
+    text-align: center;
+    font-size: 1.2rem;
+  }
+
+  .content {
+    padding: 1rem;
+  }
+
+  .content-box {
+    padding: 20px;
+    width: 100%;
+  }
+
+  .content-box h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .form-group input,
+  .form-group select {
+    padding: 12px 14px;
+    height: 45px;
+  }
+
+  button {
+    width: 100%;
+    padding: 12px;
+  }
+
+  .user-list-item {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px 0;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .user-list-item button {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .create-user-form {
+    width: 100%;
+    margin-top: 20px;
+  }
+}

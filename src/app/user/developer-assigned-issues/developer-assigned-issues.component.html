@@ -1,0 +1,76 @@
+  <div class="admin-container">
+    <div class="admin-header">
+      <h2 class="admin-logo">Issue Tracker - Developer</h2>
+      <div class="header-buttons">
+        <button mat-raised-button class="home-button" routerLink="/user-panel/developer"><mat-icon>arrow_back</mat-icon>Go back</button>
+        <button mat-raised-button class="home-button" routerLink="/home">
+          <mat-icon>exit_to_app</mat-icon> Log out
+        </button>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-box">
+        <div class="assigned-issues-container">
+         <h2 style="color: #663BB7;">Assigned Issues</h2>
+        
+          <div style="margin-bottom: 16px;">
+            <mat-form-field appearance="fill">
+              <mat-label>Select View</mat-label>
+              <mat-select [(value)]="currentView" (selectionChange)="switchView($event.value)">
+                <mat-option value="my">My Issues</mat-option>
+                <mat-option value="all">All Issues</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          
+          
+          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="width: 100%;">
+          
+            <!-- ID Column -->
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef>ID</th>
+              <td mat-cell *matCellDef="let issue">{{ issue.id }}</td>
+            </ng-container>
+          
+            <!-- Title Column -->
+            <ng-container matColumnDef="title">
+              <th mat-header-cell *matHeaderCellDef>Title</th>
+              <td mat-cell *matCellDef="let issue">{{ issue.title }}</td>
+            </ng-container>
+          
+            <!-- Description Column -->
+            <ng-container matColumnDef="description">
+              <th mat-header-cell *matHeaderCellDef>Description</th>
+              <td mat-cell *matCellDef="let issue">{{ issue.description }}</td>
+            </ng-container>
+          
+            <!-- Project Name Column -->
+            <ng-container matColumnDef="projectName">
+              <th mat-header-cell *matHeaderCellDef>Project</th>
+              <td mat-cell *matCellDef="let issue">{{ issue.projectName }}</td>
+            </ng-container>
+          
+            <!-- Status Column -->
+            <ng-container matColumnDef="status">
+              <th mat-header-cell *matHeaderCellDef>Status</th>
+              <td mat-cell *matCellDef="let issue">
+                <mat-form-field appearance="fill" style="width: 150px;">
+                  <mat-select [(value)]="issue.status" 
+                              (selectionChange)="updateStatus(issue)" 
+                              [disabled]="currentView === 'all'">
+                    <mat-option *ngFor="let status of statusOptions" [value]="status">{{ status }}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </td>
+            </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          
+          </table>
+          
+          
+        </div>
+      </div>
+    </div>
+  </div>

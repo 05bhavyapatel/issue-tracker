@@ -1,0 +1,59 @@
+<div class="admin-container">
+    <div class="admin-header">
+      <h2 class="admin-logo">Issue Tracker</h2>
+      <div class="header-buttons">
+        <button mat-raised-button class="home-button" routerLink="/user-panel/tester">
+            <mat-icon>arrow_back</mat-icon>Go back</button>
+        <button mat-raised-button class="home-button" routerLink="/home">
+          <mat-icon>exit_to_app</mat-icon> Log out
+        </button>
+      </div>
+    </div>
+  
+    <div class="content">
+      <div class="content-box">
+        <h2>Verify Issues</h2>
+  
+        <!-- Filter Section -->
+        <div class="filter-section">
+          <label>Status:
+            <select [(ngModel)]="filterStatus">
+              <option value="">All</option>
+              <option value="OPEN">OPEN</option>
+              <option value="IN_PROGRESS">IN_PROGRESS</option>
+              <option value="CLOSED">CLOSED</option>
+            </select>
+          </label>
+  
+          <button (click)="applyFilter()" class="btn">
+            <span class="material-icons">filter_alt</span> Apply Filter
+          </button>
+        </div>
+  
+        <!-- Issues Table -->
+        <table class="issue-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let issue of filteredIssues">
+              <td>{{ issue.id }}</td>
+              <td>{{ issue.title }}</td>
+              <td>{{ issue.description }}</td>
+              <td>{{ issue.status }}</td>
+            </tr>
+          </tbody>
+        </table>
+  
+        <div *ngIf="filteredIssues.length === 0">
+          <p>No issues found.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  

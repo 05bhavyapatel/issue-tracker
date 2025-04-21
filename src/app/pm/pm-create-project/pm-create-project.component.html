@@ -1,0 +1,30 @@
+<div class="admin-container">
+  <div class="admin-header">
+    <h2 class="admin-logo">Issue Tracker</h2>
+    <div class="header-buttons">
+      <button mat-raised-button class="home-button" routerLink="/pm"><mat-icon>arrow_back</mat-icon>
+        Go Back</button>
+      <button mat-raised-button class="home-button" routerLink="/home">
+        <mat-icon>exit_to_app</mat-icon> Log out
+      </button>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="content-box">
+      <h3>Create New Project</h3>
+
+      <input type="text" placeholder="Project Name" [(ngModel)]="project.name">
+      <textarea placeholder="Project Description" [(ngModel)]="project.description"></textarea>
+      <input type="date" placeholder="Start Date" [(ngModel)]="project.startDate">
+      <input type="date" placeholder="End Date" [(ngModel)]="project.endDate">
+
+      <select [(ngModel)]="project.managerId">
+        <option value="" disabled selected>Select Project Manager</option>
+        <option *ngFor="let manager of managers" [value]="manager.id">{{ manager.username }}</option>
+      </select>
+
+      <button (click)="createProject()" class="btn">Create Project</button>
+    </div>
+  </div>
+</div>

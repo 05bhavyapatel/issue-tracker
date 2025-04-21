@@ -1,0 +1,90 @@
+<div class="admin-container">
+  <div class="admin-header">
+    <h2 class="admin-logo">Issue Tracker: Admin</h2>
+    <div class="header-buttons">
+      <button mat-raised-button class="home-button" routerLink="/admin-user">
+        <mat-icon>person</mat-icon> Create Users
+      </button>
+      <button mat-raised-button class="home-button" routerLink="/admin-project">
+        <mat-icon>track_changes</mat-icon> Manage Project
+      </button>
+      <button mat-raised-button class="home-button" routerLink="/home">
+        <mat-icon>logout</mat-icon> Log out
+      </button>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="content-box" *ngIf="!loading">
+      <h3>Users Detail</h3>
+
+      <div class="search-sort-container">
+        <input
+          type="text"
+          [(ngModel)]="searchText"
+          placeholder="Search by username"
+          class="search-input"
+        />
+      
+        <div class="sort-buttons">
+          <button mat-raised-button [matMenuTriggerFor]="sortMenu">
+            <mat-icon>sort</mat-icon>
+            Sort
+          </button>
+      
+          <mat-menu #sortMenu="matMenu">
+            <button mat-menu-item (click)="sortBy('role')">
+              <mat-icon>person</mat-icon> By Role
+            </button>
+            <button mat-menu-item (click)="sortBy('name')">
+              <mat-icon>text_fields</mat-icon> By Name
+            </button>
+            <button mat-menu-item (click)="sortBy('email')">
+              <mat-icon>email</mat-icon> By Email
+            </button>
+          </mat-menu>
+        </div>
+      </div>
+      
+
+      <!-- Desktop Table View -->
+      <div class="table-container">
+        <table *ngIf="users.length > 0" class="user-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Role</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of users | userFilter:searchText">
+              <td>{{ user.id }}</td>
+              <td>{{ user.username }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.role }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Mobile Card View -->
+      <div class="card-view" *ngIf="users.length > 0">
+        <div class="user-card" *ngFor="let user of users | userFilter:searchText">
+          <p><strong>ID:</strong> {{ user.id }}</p>
+          <p><strong>Username:</strong> {{ user.username }}</p>
+          <p><strong>Email:</strong> {{ user.email }}</p>
+          <p><strong>Role:</strong> {{ user.role }}</p>
+        </div>
+      </div>
+
+      <p *ngIf="users.length === 0">No users found.</p>
+    </div>
+
+    <div class="loading" *ngIf="loading">
+      <mat-spinner></mat-spinner>
+      <p>Loading users...</p>
+    </div>
+  </div>
+</div>

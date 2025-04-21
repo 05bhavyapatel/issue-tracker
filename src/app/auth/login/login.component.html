@@ -1,0 +1,28 @@
+<header class="login-header">
+  <span class="logo-text">Issue Tracker</span>
+
+  <div class="header-buttons">
+    <a class="home-button" routerLink="/register">
+    Register</a>
+    <a class="home-button" routerLink="/home">Home</a>
+  </div>
+</header>
+
+<div class="login-container">
+    <mat-card>
+      <h2>Login</h2>
+      <form (ngSubmit)="onLogin()" #loginForm="ngForm">
+        <mat-form-field appearance="fill">
+          <mat-label>Username</mat-label>
+          <input matInput type="text" name="username" [(ngModel)]="username" required>
+        </mat-form-field>
+      
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" name="password" [(ngModel)]="password" required>
+        </mat-form-field>
+      
+        <button mat-raised-button color="primary" type="submit">Login</button>
+      </form>      
+    </mat-card>
+  </div>

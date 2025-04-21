@@ -1,0 +1,43 @@
+<div class="page-wrapper">
+  <div class="scrolling-header">
+    <p>Welcome to Issue Tracker! Collaborate, Track, and Resolve Efficiently.</p>
+  </div>
+
+  <div class="home-container">
+    <div class="video-logo-wrapper">
+      <video class="header-logo-video" autoplay muted loop playsinline>
+        <source src="assets/Tracker.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <div class="home-left">
+      <h1>ISSUE TRACKER</h1>
+      <div class="button-group">
+        <button mat-raised-button color="primary" routerLink="/login"><mat-icon>login</mat-icon>Login</button>
+        <button mat-raised-button color="accent" routerLink="/register"><mat-icon>person_add</mat-icon>Register</button>
+        <button mat-raised-button color="warn" (click)="showContact()"><mat-icon>call</mat-icon>Contact</button>
+      </div>
+    </div>
+
+    <div class="home-right">
+      <div class="circle-box">
+        <div class="person" routerLink="/login">
+          <img src="assets/user1.png" />
+          <p>Admin</p>
+        </div>
+        <div class="person" routerLink="/login">
+          <img src="assets/user2.png" />
+          <p>Project Manager</p>
+        </div>
+        <div class="person" routerLink="/login">
+          <img src="assets/user3.png" />
+          <p>Developer</p>
+        </div>
+        <div class="person" routerLink="/login">
+          <img src="assets/user4.png" />
+          <p>Tester</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+<header class="register-header">
+  <span class="logo-text">Issue Tracker</span>
+
+  <div class="header-buttons">
+    <a class="home-button" routerLink="/login">Login</a>
+    <a class="home-button" routerLink="/home">Home</a>
+  </div>
+</header>
+
+<div class="register-container">
+    <mat-card>
+      <h2>Register</h2>
+      <form (ngSubmit)="onRegister()" #registerForm="ngForm">
+        <mat-form-field appearance="fill">
+          <mat-label>Username</mat-label>
+          <input matInput type="text" name="username" [(ngModel)]="username" required>
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" name="email" [(ngModel)]="email" required>
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" name="password" [(ngModel)]="password" required>
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>Role</mat-label>
+          <mat-select name="role" [(ngModel)]="role" required>
+            <mat-option value="" disabled>Select role</mat-option>
+            <mat-option value="ADMIN">Admin</mat-option>
+            <mat-option value="PROJECT_MANAGER">Project Manager</mat-option>
+            <mat-option value="DEVELOPER">Developer</mat-option>
+            <mat-option value="TESTER">Tester</mat-option>
+          </mat-select>
+        </mat-form-field>
+  
+        <button mat-raised-button color="primary" type="submit">Register</button>
+      </form>
+    </mat-card>
+  </div>
+  
